@@ -37,6 +37,9 @@
       this.$numbers = document.querySelector('[data-js="numbers"]');
       this.$cart = document.querySelector('[data-js="cart"]');
       this.$cartTotal = document.querySelector('[data-js="total-price"]');
+      this.$cartEmptyMessage = document.querySelector(
+        '[data-js="empty-message"]'
+      );
     },
 
     initEvents() {
@@ -108,7 +111,14 @@
       const selectedNumbers = app.getSelectedNumbers();
       const currentGameInfo = app.data.types[app.currentGame];
 
-      if (selectedNumbers.length < currentGameInfo['max-number']) return;
+      if (selectedNumbers.length < currentGameInfo['max-number']) {
+        const missing = currentGameInfo['max-number'] - selectedNumbers.length;
+        const pluralNumero = missing === 1 ? 'número' : 'números';
+        alert(
+          `Você precisa selecionar mais ${missing} ${pluralNumero} para adicionar ao carrinho!`
+        );
+        return;
+      }
 
       const template = document.querySelector('[data-js="cart-item-template"]');
       const item = template.content.cloneNode(true);
@@ -131,7 +141,22 @@
       app.cartTotal += currentGameInfo.price;
       app.updateCartTotal();
 
+      app.changeVisibleEmptyCartMessage(false);
       app.$cart.appendChild(item);
+      app.clearSelectedNumbers();
+      app.autoScrollCartList();
+    },
+
+    changeVisibleEmptyCartMessage(visible) {
+      if (visible) {
+        this.$cartEmptyMessage.removeAttribute('style');
+      } else {
+        this.$cartEmptyMessage.style.display = 'none';
+      }
+    },
+
+    autoScrollCartList() {
+      this.$cart.scrollBy(0, this.$cart.scrollHeight);
     },
 
     handleRemoveItemFromCart() {
@@ -142,6 +167,10 @@
 
       app.cartTotal -= price;
       app.updateCartTotal();
+
+      if (app.cartTotal <= 0) {
+        app.changeVisibleEmptyCartMessage(true);
+      }
     },
 
     updateCartTotal() {
@@ -178,13 +207,19 @@
 
     handleNumberClick() {
       const currentGameInfo = app.data.types[app.currentGame];
-
       const selectedNumbersCount = app.getSelectedNumbers().length;
 
       if (this.dataset.selected) {
         delete this.dataset.selected;
         this.style.backgroundColor = '#adc0c4';
-      } else if (selectedNumbersCount < currentGameInfo['max-number']) {
+      } else {
+        if (selectedNumbersCount >= currentGameInfo['max-number']) {
+          alert(
+            `Você só pode selecionar ${currentGameInfo['max-number']} números na ${currentGameInfo.type}!`
+          );
+          return;
+        }
+
         this.dataset.selected = true;
         this.style.backgroundColor = currentGameInfo.color;
       }
@@ -198,16 +233,28 @@
     },
 
     randomCompleteGame() {
-      app.clearSelectedNumbers();
+      const selectedNumbers = app.getSelectedNumbers();
+      const currentGameInfo = app.data.types[app.currentGame];
+
+      if (selectedNumbers.length >= currentGameInfo['max-number']) {
+        alert('Seu jogo já está completo!');
+        return;
+      }
 
       const numbers = document.querySelectorAll('.number');
       const randomNumbers = [];
-      const currentGameInfo = app.data.types[app.currentGame];
 
-      for (let i = 0; i < currentGameInfo['max-number']; i++) {
+      for (
+        let i = selectedNumbers.length;
+        i < currentGameInfo['max-number'];
+        i++
+      ) {
         const randomNumber = Math.floor(Math.random() * numbers.length);
 
-        if (!randomNumbers.includes(randomNumber)) {
+        if (
+          !randomNumbers.includes(randomNumber) &&
+          !selectedNumbers.includes((randomNumber + 1).toString())
+        ) {
           randomNumbers.push(randomNumber);
         } else {
           i--;

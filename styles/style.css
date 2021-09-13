@@ -236,6 +236,30 @@ main .main-content .cart .cart-container ul {
   flex-direction: column;
   gap: 32px;
   margin: 35px 0;
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+main .main-content .cart .cart-container ul::-webkit-scrollbar {
+  width: 4px;
+}
+main .main-content .cart .cart-container ul::-webkit-scrollbar-track {
+  background: #f4f4f4;
+}
+main .main-content .cart .cart-container ul::-webkit-scrollbar-track:hover {
+  background: #dfdfdf;
+}
+main .main-content .cart .cart-container ul::-webkit-scrollbar-thumb {
+  background: #868686;
+}
+main .main-content .cart .cart-container ul::-webkit-scrollbar-thumb:hover {
+  background: #707070;
+}
+
+main .main-content .cart .cart-container .empty-message {
+  color: #707070;
+  text-align: center;
+  font-weight: 300;
 }
 
 main .main-content .cart .cart-container ul li {
