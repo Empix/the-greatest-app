@@ -1,0 +1,392 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* Reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: 'Work Sans', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #f7f7f7;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Wrapper */
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* Header */
+header {
+  width: 100%;
+  border-bottom: 2px solid #ebebeb;
+  display: flex;
+  justify-content: center;
+  color: #707070;
+  padding: 0 50px;
+}
+
+header .header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1090px;
+  gap: 74px;
+}
+
+header .header-content .col {
+  display: flex;
+  align-items: center;
+  gap: 74px;
+}
+
+header .header-content .col h1 {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 44px;
+  position: relative;
+  padding: 10px 0;
+}
+
+header .header-content .col h1::after {
+  content: '';
+  width: 107%;
+  height: 7px;
+  background-color: #b5c401;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: -4px;
+  left: -3px;
+}
+
+header .header-content .col a {
+  color: #707070;
+  text-decoration: none;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header .header-content .menu {
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+header .header-content .col a.home {
+  margin-right: auto;
+}
+
+header .header-content .menu-hamburguer {
+  cursor: pointer;
+  user-select: none;
+  display: none;
+}
+
+/* Main */
+main {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  padding: 0 50px;
+}
+
+main .main-content {
+  width: 100%;
+  max-width: 1090px;
+
+  display: grid;
+  gap: 45px;
+  grid-template-columns: 2fr 1fr;
+}
+
+/* -- New bet */
+
+main .main-content .new-bet h2 {
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: lighter;
+  font-style: italic;
+  color: #707070;
+  margin-bottom: 33px;
+}
+
+main .main-content .new-bet h2 span {
+  font-weight: bold;
+}
+
+main .main-content .new-bet p {
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 400;
+  color: #868686;
+}
+
+main .main-content .new-bet .bold {
+  font-weight: bold;
+}
+
+main .main-content .new-bet .title-games {
+  margin-bottom: 20px;
+}
+
+main .main-content .new-bet .games {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 25px;
+  margin-bottom: 30px;
+}
+
+main .main-content .new-bet .games button {
+  padding: 8px 28px;
+  font-size: 14px;
+  background-color: #fff;
+  border-radius: 100px;
+  border: 2px solid #707070;
+  font-style: italic;
+  font-weight: bold;
+  color: #707070;
+  cursor: pointer;
+}
+
+main .main-content .new-bet .info {
+  margin-bottom: 30px;
+}
+
+main .main-content .new-bet .numbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 45px;
+  user-select: none;
+  justify-content: center;
+}
+
+main .main-content .new-bet .numbers .number {
+  background-color: #adc0c4;
+  width: 65px;
+  height: 65px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+main .main-content .new-bet .options {
+  display: flex;
+  gap: 25px;
+  justify-content: flex-start;
+}
+
+main .main-content .new-bet .options button {
+  border: 1px solid #27c383;
+  padding: 13px 25px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 10px;
+  background-color: transparent;
+  color: #27c383;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+main .main-content .new-bet .options .add-to-cart {
+  background-color: #27c383;
+  color: #fff;
+  margin-left: auto;
+}
+
+/* -- Cart */
+
+main .main-content .cart .cart-container {
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px 10px 0 0;
+  padding: 32px 19px;
+}
+
+main .main-content .cart .cart-container ul {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 35px 0;
+}
+
+main .main-content .cart .cart-container ul li {
+  display: flex;
+  align-items: center;
+}
+
+main .main-content .cart .cart-container ul li .remove {
+  padding: 0 14px 0 0;
+  cursor: pointer;
+}
+
+main .main-content .cart .cart-container ul li .bet {
+  border-left: 4px solid #707070;
+  border-radius: 5px 0 0 5px;
+  padding: 12px;
+}
+
+main .main-content .cart .cart-container ul li .bet .bet-numbers {
+  font-size: 15px;
+  color: #868686;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+main .main-content .cart .cart-container ul li .bet .bet-name {
+  color: #707070;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+main .main-content .cart .cart-container ul li .bet .bet-price {
+  color: #868686;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+main .main-content .cart .cart-container .cart-title,
+main .main-content .cart .cart-container .total .title {
+  font-size: 24px;
+  font-weight: bold;
+  font-style: italic;
+  text-transform: uppercase;
+  color: #707070;
+}
+
+main .main-content .cart .cart-container .total {
+  font-size: 24px;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #707070;
+}
+
+main .main-content .cart .save {
+  background-color: #f4f4f4;
+  border: 1px solid #e2e2e2;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+  padding: 30px 0;
+  cursor: pointer;
+}
+
+main .main-content .cart .save p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+
+  font-size: 35px;
+  color: #27c383;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  border-top: 2px solid #ebebeb;
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+}
+
+footer p {
+  color: #707070;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+/* Responsive */
+@media only screen and (max-width: 860px) {
+  /* Main */
+  main .main-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 690px) {
+  /* Header */
+  header .header-content .col {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  header .header-content .menu-hamburguer {
+    display: flex;
+  }
+
+  header .header-content .col a.home {
+    margin-right: 0;
+  }
+
+  header .header-content .menu {
+    position: absolute;
+    top: 74px;
+    background-color: #f7f7f7;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    flex-direction: column;
+    border-bottom: 2px solid #ebebeb;
+
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  /* Header */
+  header {
+    padding: 0 30px;
+  }
+
+  /* Main */
+  main {
+    padding: 0 30px;
+  }
+
+  main .main-content .new-bet .options {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  main .main-content .new-bet .options button {
+    width: 100%;
+  }
+
+  main .main-content .new-bet .options .add-to-cart {
+    margin-left: 0;
+  }
+}
