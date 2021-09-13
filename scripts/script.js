@@ -16,7 +16,6 @@
   });
 
   window.addEventListener('resize', () => {
-    // $menu.style.display = '';
     $menu.removeAttribute('style');
     delete $menu.dataset.opened;
   });
